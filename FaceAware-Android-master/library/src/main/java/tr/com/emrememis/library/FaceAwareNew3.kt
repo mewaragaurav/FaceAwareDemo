@@ -14,7 +14,7 @@ import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.FaceDetector
 import kotlin.math.absoluteValue
 
-class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppCompatImageView(context, attrs) {
+class FaceAwareNew3 constructor(context: Context, attrs: AttributeSet?) : AppCompatImageView(context, attrs) {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -30,43 +30,15 @@ class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppC
         var dwidth = drawable.intrinsicWidth
         var dheight = drawable.intrinsicHeight
 
-        Log.d("dWidthBeforeScale", dwidth.toString())
-        Log.d("dHeightBeforeScale", dheight.toString())
-
         var dHalfWidth = drawable.intrinsicWidth * .5f
         var vHalfWidth = vWidth * .5f
         var dHalfHeight = drawable.intrinsicHeight * .5f
         var vHalfHeight = vHeight * .5f
 
-        var scale = 0f
-        var ndWidth = dwidth.toFloat()
-        var ndHeight = dheight.toFloat()
-        var nx = 0f
-        var ny = 0f
-        Log.d("dHeightBeforeScale", dheight.toString())
 
-        if (dwidth * vHeight > vWidth * dheight) {
-            scale = vHeight.toFloat() / dheight.toFloat()
-            ndWidth = dwidth * scale
-            dHalfWidth = ndWidth * .5f
-            faceCenter.x = faceCenter.x * scale
-            nx = (vWidth - dwidth * scale) * 0.5f
-            Log.d("ScaleX", scale.toString())
-        } else {
-            scale = vWidth.toFloat() / dwidth.toFloat()
-            ndHeight = dheight * scale
-            dHalfHeight = ndHeight * .5f
-            faceCenter.y = faceCenter.y * scale
-            ny = (vHeight - dheight * scale) * 0.5f
-            Log.d("ScaleY", scale.toString())
-        }
-
-        Log.d("dWidthAfterScale", ndWidth.toString())
-        Log.d("dHeightAFterScale", ndHeight.toString())
-
-        if(ndWidth > width) {
+        if(dwidth > width) {
             if(faceCenter.x > dHalfWidth) {
-                val dx = ndWidth - (faceCenter.x + vHalfWidth)
+                val dx = dwidth - (faceCenter.x + vHalfWidth)
                 if (dx < 0) faceCenter.x = faceCenter.x - dx.absoluteValue
             } else {
                 val dx = faceCenter.x - vHalfWidth
@@ -74,9 +46,9 @@ class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppC
             }
         }
 
-        if(ndHeight > height) {
+        if(dheight > height) {
             if(faceCenter.y > dHalfHeight) {
-                val dy = ndHeight - (faceCenter.y + vHalfHeight)
+                val dy = dheight - (faceCenter.y + vHalfHeight)
                 if(dy < 0) faceCenter.y = faceCenter.y - dy.absoluteValue
             } else {
                 val dy = faceCenter.y - vHalfHeight
@@ -87,7 +59,7 @@ class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppC
         val dx = faceCenter.x - vHalfWidth
         val dy = faceCenter.y - vHalfHeight
         val matrix = Matrix()
-        matrix.setScale(scale, scale)
+        matrix.setScale(1f,1f)
         matrix.postTranslate(dx, dy)
         imageMatrix = matrix
     }
