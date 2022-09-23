@@ -14,7 +14,7 @@ import com.google.android.gms.vision.Frame
 import com.google.android.gms.vision.face.FaceDetector
 import kotlin.math.absoluteValue
 
-class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppCompatImageView(context, attrs) {
+class FaceAwareNew5 constructor(context: Context, attrs: AttributeSet?) : AppCompatImageView(context, attrs) {
 
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
@@ -61,8 +61,10 @@ class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppC
             Log.d("ScaleY", scale.toString())
         }
 
-        Log.d("dWidthAfterScale", ndWidth.toString())
-        Log.d("dHeightAFterScale", ndHeight.toString())
+        Log.d("dHalfWidthAfterScale", dHalfWidth.toString())
+        Log.d("dHalfHeightAFterScale", dHalfHeight.toString())
+        Log.d("FaceCenterX", faceCenter.x.toString())
+        Log.d("FaceCenterY", faceCenter.y.toString())
 
         if(ndWidth > width) {
             if(faceCenter.x > dHalfWidth) {
@@ -87,8 +89,8 @@ class FaceAwareNewNew constructor(context: Context, attrs: AttributeSet?) : AppC
         val dx = faceCenter.x - vHalfWidth
         val dy = faceCenter.y - vHalfHeight
         val matrix = Matrix()
+        matrix.setTranslate(dx, dy)
         matrix.setScale(scale, scale)
-        matrix.postTranslate(nx, ny)
         imageMatrix = matrix
     }
 

@@ -13,7 +13,7 @@
         android:orientation="vertical"
         android:layout_gravity="center">
 
-        <tr.com.emrememis.library.FaceAwareNew4
+        <tr.com.emrememis.library.FaceAwareNew5
             android:id="@+id/faceAware"
             android:layout_width="250dp"
             android:layout_height="100dp"
