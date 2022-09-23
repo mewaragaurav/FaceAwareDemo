@@ -40,8 +40,8 @@ class MainActivity : AppCompatActivity() {
 
          Glide.with(this).load(R.drawable.image).into(binding.faceAware)
         */
-        binding.iv2.setImageResource(R.drawable.demo4)
-        binding.faceAware.setImageResource(R.drawable.demo4)
+        binding.iv2.setImageResource(R.drawable.demo18)
+        binding.faceAware.setImageResource(R.drawable.demo18)
 
     }
 
